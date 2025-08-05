@@ -1,13 +1,13 @@
 #![cfg_attr(not(feature = "std"), no_std, no_main)]
 
 #[ink::contract]
-mod meme_token {
+mod frassecoin {
     use ink::storage::Mapping;
     use scale::{Encode, Decode};
     use scale_info::TypeInfo;
 
     #[ink(storage)]
-    pub struct MemeToken {
+    pub struct FrasseCoin {
         total_supply: Balance,
         balances: Mapping<AccountId, Balance>,
         owner: AccountId,
@@ -23,7 +23,7 @@ mod meme_token {
         NotOwner,
     }
 
-    impl MemeToken {
+    impl FrasseCoin {
         #[ink(constructor)]
         pub fn new(initial_supply: Balance) -> Self {
             let caller = Self::env().caller();
@@ -38,7 +38,7 @@ mod meme_token {
 
         #[ink(constructor)]
         pub fn default() -> Self {
-            Self::new(0)
+            Self::new(1000)
         }
 
         #[ink(message)]
@@ -100,13 +100,13 @@ mod meme_token {
 
         #[ink::test]
         fn total_supply_works() {
-            let contract = MemeToken::new(100);
+            let contract = FrasseCoin::new(100);
             assert_eq!(contract.total_supply(), 100);
         }
 
         #[ink::test]
         fn balance_of_works() {
-            let contract = MemeToken::new(100);
+            let contract = FrasseCoin::new(100);
             let accounts = test::default_accounts::<ink::env::DefaultEnvironment>();
             assert_eq!(contract.balance_of(accounts.alice), 100);
             assert_eq!(contract.balance_of(accounts.bob), 0);
@@ -114,7 +114,7 @@ mod meme_token {
 
         #[ink::test]
         fn transfer_works() {
-            let mut contract = MemeToken::new(100);
+            let mut contract = FrasseCoin::new(100);
             let accounts = test::default_accounts::<ink::env::DefaultEnvironment>();
             assert_eq!(contract.transfer(accounts.bob, 10), Ok(()));
             assert_eq!(contract.balance_of(accounts.bob), 10);
@@ -123,7 +123,7 @@ mod meme_token {
 
         #[ink::test]
         fn transfer_insufficient_balance_fails() {
-            let mut contract = MemeToken::new(50);
+            let mut contract = FrasseCoin::new(50);
             let accounts = test::default_accounts::<ink::env::DefaultEnvironment>();
             let result = contract.transfer(accounts.bob, 100);
             assert_eq!(result, Err(TransferError::InsufficientBalance));
@@ -133,7 +133,7 @@ mod meme_token {
 
         #[ink::test]
         fn only_owner_can_mint() {
-            let mut contract = MemeToken::new(0);
+            let mut contract = FrasseCoin::new(0);
             let accounts = test::default_accounts::<ink::env::DefaultEnvironment>();
             assert_eq!(contract.mint(accounts.bob, 42), Ok(()));
             assert_eq!(contract.total_supply(), 42);
