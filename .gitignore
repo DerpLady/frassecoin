@@ -65,3 +65,6 @@ out/
 *.env.development.local
 *.env.production.local
 *.env.test.local
+
+# other
+frassecoinlogo.png
