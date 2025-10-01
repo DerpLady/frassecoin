@@ -1,9 +1,67 @@
-# Ignore build artifacts from the local tests sub-crate.
-/target/
-
-# Ignore backup files creates by cargo fmt.
-**/*.rs.bk
-
 # Remove Cargo.lock when creating an executable, leave it for libraries
 # More information here http://doc.crates.io/guide.html#cargotoml-vs-cargolock
 Cargo.lock
+
+# --- Rust / cargo ---
+/target/
+/**/*.rs.bk
+
+# Lockfile: keep for binaries (recommended). Uncomment to ignore if this is a pure library.
+# Cargo.lock
+
+# --- ink! / cargo-contract artifacts (usually under target/ink) ---
+/artifacts/
+/contract-artifacts/
+
+# --- Env & secrets ---
+.env
+.env.*
+*.secret
+*.secrets
+*.credentials
+*.token
+*.cert
+*.pem
+*.key
+*.p12
+*.der
+*.crt
+*.asc
+*.gpg
+*.pgp
+*.age
+
+# --- Substrate / local node data ---
+/data/
+/**/chains/*/keystore/
+/**/chains/*/db/
+
+# --- Logs / dumps / local DBs ---
+*.log
+*.sqlite
+*.db
+*.sqlite3
+*.dump
+
+# --- Editor / OS junk ---
+.vscode/
+.idea/
+*.swp
+*.DS_Store
+Thumbs.db
+
+# --- Docker compose overrides (often hold secrets) ---
+docker-compose.override.yml
+
+# --- If you also have a web UI in this repo ---
+node_modules/
+dist/
+build/
+*.map
+.next/
+out/
+# local envs for web frameworks
+*.env.local
+*.env.development.local
+*.env.production.local
+*.env.test.local

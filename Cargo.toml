@@ -26,3 +26,12 @@ ink_e2e = { version = "5.1.1" }
 [lib]
 name = "frassecoin"
 path = "lib.rs"
+
+[profile.dev]       # what you get from `cargo build`
+debug = 1           # 0 = no debug info, 1 = line tables only (much smaller), 2 = full debug (huge)
+incremental = true  # incremental builds faster, but can take more disk
+
+[profile.release]   # what you get from `cargo build --release` or `cargo contract build --release`
+debug = 0           # strip debug symbols completely (default = 0)
+lto = "thin"        # link-time optimization (slightly bigger compile times, smaller/faster binaries)
+codegen-units = 1   # better optimization, fewer duplicate artifacts
