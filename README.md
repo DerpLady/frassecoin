@@ -46,4 +46,5 @@ Requirements:
 
 ## License
 
-MIT License — free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, provided the copyright notice and this permission appear in all copies. The software is provided “as is”, without warranty of any kind.
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+Licensed under the [MIT License](LICENSE).
