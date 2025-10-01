@@ -1,6 +1,7 @@
 # FrasseCoin 🐾
 
-![FrasseCoin Logo](frassecoinlogo.png)
+
+<img width="314" height="512" alt="frassecoinlogo" src="https://github.com/user-attachments/assets/bca7f6e7-ef17-4814-97e6-3182a44f3ec8" />
 
 ## About
 
@@ -16,13 +17,13 @@ It’s my **first Rust project**, created partly as a learning experience and pa
 - Written in **Rust** with the **ink! smart contract framework**
 - Basic meme coin logic (minting, balances, transfers)
 - Lightweight project structure (cargo-based)
-- Fun branding (because who doesn’t love cats 🐱)
+- Frasse approved
 
 ---
 
 ## Why?
 
-Because memes rule the internet.  
+Because Frasse is the cat of all cats.
 And because writing a coin contract from scratch is a great way to **learn Rust + blockchain development**.
 
 ---
@@ -34,15 +35,15 @@ And because writing a coin contract from scratch is a great way to **learn Rust 
 - 🛠️ Work-in-progress: further testing and refinement
 - 🚧 Not audited — **do not use in production or with real funds**
 
----
-
 ## Building
 
-Make sure you have the required toolchain:
+Requirements:
+- Rust toolchain (latest stable)  
+- `cargo-contract` installed  
+- Add the Wasm target:
+  ```bash
+  rustup target add wasm32-unknown-unknown
 
-- Rust (latest stable, plus `wasm32-unknown-unknown` target)
-- [`cargo-contract`](https://github.com/paritytech/cargo-contract)
+## License
 
-Then:
-
-```b
+MIT License — free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, provided the copyright notice and this permission appear in all copies. The software is provided “as is”, without warranty of any kind.
